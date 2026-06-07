@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: payflow
+  datasource:
+    # JVM default on Windows/VN is Asia/Saigon — Postgres expects Asia/Ho_Chi_Minh or UTC
+    url: jdbc:postgresql://localhost:5432/payflow?connectionTimeZone=UTC
+    username: payflow
+    password: payflow
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration 
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: when_authorized
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
