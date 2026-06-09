@@ -31,3 +31,7 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html
+
+payflow:
+  idempotency:
+    ttl-hours: 24
